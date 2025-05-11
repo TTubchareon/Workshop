@@ -1,11 +1,7 @@
 using UnityEngine;
 
-public class ItemCylinder : MonoBehaviour, IInteractable
+public class ItemCylinder : ItemBase, IInteractable
 {
-    public void Interact()
-    {
-        Debug.Log("Interact Item : Cylinder");
-    }
-
+    
     
 }

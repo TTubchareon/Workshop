@@ -1,11 +1,7 @@
 using UnityEngine;
 
-public class ItemSphere : MonoBehaviour, IInteractable
+public class ItemSphere : ItemBase, IInteractable
 {
-    public void Interact()
-    {
-        Debug.Log("Interact Item : Sphere");
-    }
-
+   
     
 }
