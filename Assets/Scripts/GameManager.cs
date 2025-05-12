@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
 public class GameManager : MonoBehaviour
 {
    public static GameManager instance;
@@ -61,7 +62,7 @@ public class GameManager : MonoBehaviour
         {
             timeCounter -= Time.deltaTime;
             timeCounterText.text = timeCounter.ToString();
-            targetCurrentAmountText.text = "x" + (targetAmount - InventoryManager.instance.GetItemAmount(targetItem)).ToString();
+            targetCurrentAmountText.text = "X   " + (targetAmount - InventoryManager.instance.GetItemAmount(targetItem)).ToString();
 
             if (InventoryManager.instance.GetItemAmount(targetItem) >= targetAmount) 
             {

@@ -20,7 +20,7 @@ public class InventoryPanel : MonoBehaviour
         
         for (int i = 0; i < InventoryManager.instance.inventoryList.Count; i++)
         {
-            GameObject itemButtonObj = GameObject.Instantiate(itemButtonPrefab, rightPanelTransform);
+            GameObject itemButtonObj = Instantiate(itemButtonPrefab, rightPanelTransform);
             ItemButton itemButtonComp = itemButtonObj.GetComponent<ItemButton>();
             itemButtonComp.data = InventoryManager.instance.inventoryList[i];
             itemButtonComp.icon.sprite = itemButtonComp.data.itemIcon;
