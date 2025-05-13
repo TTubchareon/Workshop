@@ -75,11 +75,13 @@ public class GameManager : MonoBehaviour
                 //Debug.Log("You Win");
                 isPlayerWin = true;
             }
-        }
-        else 
-        {
-            SceneManager.LoadScene("MainMenu");        
-        }
+        } 
+            else if (InventoryManager.instance.GetItemAmount(targetItem) <= targetAmount)
+            {
+                ShowTryAgain();                 
+                           
+            }
+                   
     }
 
     public TMP_Text winText;
@@ -90,6 +92,21 @@ public class GameManager : MonoBehaviour
         winText.gameObject.SetActive(true);
         winTextIcon.gameObject.SetActive(true);
 
+    }
+
+    public TMP_Text LoseText;
+    
+
+    public void ShowTryAgain()
+    {
+        LoseText.gameObject.SetActive(true);
+        winTextIcon.gameObject.SetActive(true);
+        Invoke("LoadScene", 5f);
+    }
+
+    void LoadScene()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 
 }
