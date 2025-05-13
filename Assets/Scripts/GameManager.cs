@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
+
 public class GameManager : MonoBehaviour
 {
    public static GameManager instance;
@@ -27,7 +28,7 @@ public class GameManager : MonoBehaviour
         inventoryPanel.OnOpen();
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        Time.timeScale = 0f;
+        Time.timeScale = 0.00f;
     }
 
     public void CloseInventoryPanel() 
@@ -35,16 +36,18 @@ public class GameManager : MonoBehaviour
         inventoryPanel.gameObject.SetActive(false);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        Time.timeScale = 1f;
+        Time.timeScale = 1.00f;
     }
 
-    public float timeCounter = 30f;
+    public float timeCounter = 30.00f;
     public ItemData targetItem;
     public int targetAmount = 5;
 
     public TMP_Text timeCounterText;
     public Image targetItemIcon;
     public TMP_Text targetCurrentAmountText;
+
+    
 
     public bool isPlayerWin = false;
 
@@ -58,15 +61,18 @@ public class GameManager : MonoBehaviour
         if (isPlayerWin)
             return;
 
-        if (timeCounter > 0f) 
+        if (timeCounter > 0.00f) 
         {
             timeCounter -= Time.deltaTime;
-            timeCounterText.text = timeCounter.ToString();
+            timeCounterText.text = timeCounter.ToString("00.00");
             targetCurrentAmountText.text = "X   " + (targetAmount - InventoryManager.instance.GetItemAmount(targetItem)).ToString();
 
             if (InventoryManager.instance.GetItemAmount(targetItem) >= targetAmount) 
             {
-                Debug.Log("You Win");
+                
+                ShowYouWin();
+                
+                //Debug.Log("You Win");
                 isPlayerWin = true;
             }
         }
@@ -74,6 +80,16 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene("MainMenu");        
         }
+    }
+
+    public TMP_Text winText;
+    public Image winTextIcon;
+
+    public void ShowYouWin()
+    {
+        winText.gameObject.SetActive(true);
+        winTextIcon.gameObject.SetActive(true);
+
     }
 
 }
